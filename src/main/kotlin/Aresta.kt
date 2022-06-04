@@ -1,0 +1,1 @@
+class Aresta(val to: Vertice, val distance: Int)
