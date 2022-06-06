@@ -32,40 +32,4 @@ fun main(args: Array<String>) {
     map.addVertice(piracicaba)
 
     map.printShortestRoutes(portoAlegre)
-
-    /*val casaDoJoao = Vertice("Casa Do João")
-    val quitanda = Vertice("Quitanda")
-    val pracinha = Vertice("Pracinha")
-    val armazen = Vertice("Armazem")
-    val cancela = Vertice("Cancela")
-    val escola = Vertice("Escola")
-    val bancaDeJornal = Vertice("Banca De Jornal")
-
-
-    casaDoJoao.getVerticeConnection(Aresta(armazen, 5))
-    casaDoJoao.getVerticeConnection(Aresta(pracinha, 6))
-    casaDoJoao.getVerticeConnection(Aresta(quitanda, 10))
-    armazen.getVerticeConnection(Aresta(bancaDeJornal,13))
-    bancaDeJornal.getVerticeConnection(Aresta(escola,3))
-    pracinha.getVerticeConnection(Aresta(cancela,6))
-    pracinha.getVerticeConnection(Aresta(quitanda,3))
-    pracinha.getVerticeConnection(Aresta(bancaDeJornal,11))
-    quitanda.getVerticeConnection(Aresta(pracinha,3))
-    quitanda.getVerticeConnection(Aresta(bancaDeJornal,6))
-    quitanda.getVerticeConnection(Aresta(cancela,4))
-    quitanda.getVerticeConnection(Aresta(casaDoJoao,10))
-    cancela.getVerticeConnection(Aresta(escola,8))
-    cancela.getVerticeConnection(Aresta(pracinha,6))
-    cancela.getVerticeConnection(Aresta(quitanda,4))
-
-    val map2 = NavigationMap()
-    map2.addVertice(casaDoJoao)
-    map2.addVertice(quitanda)
-    map2.addVertice(pracinha)
-    map2.addVertice(armazen)
-    map2.addVertice(cancela)
-    map2.addVertice(escola)
-    map2.addVertice(bancaDeJornal)
-
-    map2.printShortestRoutes(casaDoJoao)*/
 }

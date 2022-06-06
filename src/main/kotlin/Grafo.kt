@@ -2,25 +2,27 @@ import java.util.function.Consumer
 
 class Grafo() {
     private val vertices: MutableList<Vertice> = ArrayList()
-    private val distanciaVertices: MutableMap<Vertice, Int> = HashMap()
+    private val aresta: MutableMap<Vertice, Int> = HashMap()
     private val rota: MutableMap<Vertice, Vertice?> = HashMap()
+    private val destino: String = "Rio De Janeiro"
     fun printShortestRoutes(start: Vertice) {
 
         vertices.forEach(Consumer { c: Vertice ->
-            distanciaVertices[c] = INFINITE
+            aresta[c] = INFINITE
             rota[c] = null
         })
 
-        distanciaVertices[start] = 0
         val j: MutableList<Vertice> = ArrayList()
         val i: MutableList<Vertice> = ArrayList(vertices)
-        while (!i.isEmpty()) {
+        aresta[start] = 0
+
+        while (i.isNotEmpty()) {
             val minimalDistance = extractMin(i)
             i.remove(minimalDistance)
             j.add(minimalDistance)
             for (v: Aresta in minimalDistance.getVerticeConnectionList()) {
-                if (distanciaVertices[v.to]!! > distanciaVertices[minimalDistance]!! + v.distance) {
-                    distanciaVertices[v.to] = distanciaVertices.get(minimalDistance)!! + v.distance
+                if (aresta[v.to]!! > aresta[minimalDistance]!! + v.distance) {
+                    aresta[v.to] = aresta[minimalDistance]!! + v.distance
                     rota[v.to] = minimalDistance
                 }
             }
@@ -33,24 +35,28 @@ class Grafo() {
     }
 
     private fun printShortestPath(source: Vertice) {
+
         for (c: Vertice in vertices) {
-            var caminho = c.name
-            var p = rota[c]
-            while (p != null) {
-                caminho = p.name + " -> " + caminho
-                p = rota[p]
+            if(c.name == destino) {
+
+                var caminho = c.name
+                var p = rota[c]
+                while (p != null) {
+                    caminho = p.name + " -> " + caminho
+                    p = rota[p]
+                }
+                println(
+                    "Distancia de " + source.name + " para " + c.name + ": " + aresta[c] + " metros"
+                )
+                println("Caminho mais curto: $caminho\n")
             }
-            println(
-                "Distancia de " + source.name + " para " + c.name + ": " + distanciaVertices[c] + " metros"
-            )
-            println("Caminho mais curto: $caminho\n")
         }
     }
 
     private fun extractMin(Q: List<Vertice>): Vertice {
         var min = Q[0]
         for (c: Vertice in Q) {
-            if (distanciaVertices[c]!! < (distanciaVertices[min])!!) {
+            if (aresta[c]!! < (aresta[min])!!) {
                 min = c
             }
         }
