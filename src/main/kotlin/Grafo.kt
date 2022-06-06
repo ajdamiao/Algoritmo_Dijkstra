@@ -4,8 +4,7 @@ class Grafo() {
     private val vertices: MutableList<Vertice> = ArrayList()
     private val aresta: MutableMap<Vertice, Int> = HashMap()
     private val rota: MutableMap<Vertice, Vertice?> = HashMap()
-    private val destino: String = "Rio De Janeiro"
-    fun printShortestRoutes(start: Vertice) {
+    fun printShortestRoutes(start: Vertice, end: Vertice) {
 
         vertices.forEach(Consumer { c: Vertice ->
             aresta[c] = INFINITE
@@ -27,17 +26,16 @@ class Grafo() {
                 }
             }
         }
-        printShortestPath(start)
+        printShortestPath(start, end)
     }
 
     fun addVertice(vertice: Vertice) {
         vertices.add(vertice)
     }
 
-    private fun printShortestPath(source: Vertice) {
-
+    private fun printShortestPath(source: Vertice, end: Vertice) {
         for (c: Vertice in vertices) {
-            if(c.name == destino) {
+            if(c.name == end.name) {
 
                 var caminho = c.name
                 var p = rota[c]

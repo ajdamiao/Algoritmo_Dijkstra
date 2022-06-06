@@ -31,5 +31,5 @@ fun main(args: Array<String>) {
     map.addVertice(patoBranco)
     map.addVertice(piracicaba)
 
-    map.printShortestRoutes(portoAlegre)
+    map.printShortestRoutes(portoAlegre, piracicaba)
 }
