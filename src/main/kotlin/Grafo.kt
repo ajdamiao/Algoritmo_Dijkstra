@@ -2,8 +2,8 @@ import java.util.function.Consumer
 
 class Grafo() {
     private val vertices: MutableList<Vertice> = ArrayList()
-    private val aresta: MutableMap<Vertice, Int> = HashMap()
-    private val rota: MutableMap<Vertice, Vertice?> = HashMap()
+    private val aresta: MutableMap<Vertice, Int> = HashMap()    // armazena a cidade e suas rotas
+    private val rota: MutableMap<Vertice, Vertice?> = HashMap() // armazena da cidade atual qual cidade anterior tem menor caminho
     fun printShortestRoutes(start: Vertice, end: Vertice) {
 
         vertices.forEach(Consumer { c: Vertice ->
@@ -20,7 +20,10 @@ class Grafo() {
             i.remove(minimalDistance)
             j.add(minimalDistance)
             for (v: Aresta in minimalDistance.getVerticeConnectionList()) {
+                /*println("=============================")
+                println("${minimalDistance.name} -> ${v.to.name}  ${v.distance} metros | distancia minima: ${aresta[minimalDistance]} ")*/
                 if (aresta[v.to]!! > aresta[minimalDistance]!! + v.distance) {
+
                     aresta[v.to] = aresta[minimalDistance]!! + v.distance
                     rota[v.to] = minimalDistance
                 }

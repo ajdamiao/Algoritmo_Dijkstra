@@ -9,14 +9,10 @@ fun main(args: Array<String>) {
     val piracicaba = Vertice("Piracicaba")
 
     portoAlegre.getVerticeConnection(Aresta(florianopolis, 462000))
-    florianopolis.getVerticeConnection(Aresta(saoPaulo, 969000))
-    saoPaulo.getVerticeConnection(Aresta(florianopolis, 969000))
     florianopolis.getVerticeConnection(Aresta(patoBranco, 632000))
     patoBranco.getVerticeConnection(Aresta(piracicaba, 802000))
-    piracicaba.getVerticeConnection(Aresta(patoBranco, 802000))
     saoPaulo.getVerticeConnection(Aresta(saoJoseDosCampos, 91000))
     saoPaulo.getVerticeConnection(Aresta(piracicaba, 157000))
-    piracicaba.getVerticeConnection(Aresta(saoPaulo, 157000))
     saoJoseDosCampos.getVerticeConnection(Aresta(caraguatatuba, 174000))
     caraguatatuba.getVerticeConnection(Aresta(rioDeJaneiro, 422000))
     rioDeJaneiro.getVerticeConnection(Aresta(caraguatatuba, 422000))
@@ -31,5 +27,5 @@ fun main(args: Array<String>) {
     map.addVertice(patoBranco)
     map.addVertice(piracicaba)
 
-    map.printShortestRoutes(portoAlegre, piracicaba)
+    map.printShortestRoutes(portoAlegre, rioDeJaneiro)
 }
